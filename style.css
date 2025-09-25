@@ -156,7 +156,10 @@ h2 {
     font-size: 1.6rem;
     cursor: grab;
     user-select: none;
-    transition: all 0.25s ease-out;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    
+    /* Adicione esta linha para desativar a seleção de texto */
+    user-select: none;
 }
 
 .function-card:hover {
