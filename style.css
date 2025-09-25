@@ -301,6 +301,25 @@ h2 {
         align-items: flex-start;
     }
 
+    .function-card {
+    width: 65px;
+    height: 65px;
+    background-color: var(--surface-white);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.6rem;
+    cursor: grab;
+    user-select: none;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    
+    /* Adicione esta linha para desativar a seleção de texto */
+    user-select: none;
+}
+
     .functions-bank {
         width: 280px;
         flex-shrink: 0;
