@@ -1,0 +1,314 @@
+/* 1. Configuração Global e Paleta de Cores */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-light: #f4f7f9;
+    --surface-white: #ffffff;
+    --primary-text: #2c3e50;
+    --secondary-text: #7f8c9b;
+    --border-light: #e8eef3;
+    --accent-blue: #3498db;
+    --accent-blue-hover: #2980b9;
+    --error-red: #e74c3c;
+}
+
+/* Estilos do botão de tema */
+.theme-toggle {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    background-color: var(--border-light);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: #dbe4ec;
+}
+
+.theme-toggle svg {
+    color: var(--secondary-text);
+}
+
+/* Lógica para mostrar o ícone correto */
+.moon-icon { display: none; }
+.sun-icon { display: block; }
+
+/* VARIÁVEIS DO TEMA ESCURO */
+body.dark-mode {
+    --bg-light: #1a1a2e;
+    --surface-white: #2a2a3e;
+    --primary-text: #e0e0f0;
+    --secondary-text: #8a8a9e;
+    --border-light: #404058;
+    --accent-blue: #5a9cfa;
+    --accent-blue-hover: #7eb4fc;
+}
+
+/* Ajustes específicos para o modo escuro */
+body.dark-mode .main-container {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .function-card:hover {
+    box-shadow: 0 8px 20px rgba(90, 156, 250, 0.2);
+}
+
+body.dark-mode .slot {
+    background-color: #1f1f33;
+}
+
+body.dark-mode .slot.drag-over {
+    background-color: #3a3a5a;
+}
+
+body.dark-mode .theme-toggle {
+    background-color: var(--border-light);
+}
+body.dark-mode .theme-toggle:hover {
+    background-color: #50506a;
+}
+
+/* Lógica para trocar o ícone no modo escuro */
+body.dark-mode .moon-icon { display: block; }
+body.dark-mode .sun-icon { display: none; }
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--primary-text);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 1.5rem;
+}
+
+/* 2. Layout Principal */
+.main-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1000px;
+    background: var(--surface-white);
+    padding: 2rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--border-light);
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--secondary-text);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* 3. Banco de Funções (Esquerda no Desktop) */
+.functions-bank {
+    background-color: var(--bg-light);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.function-card {
+    width: 65px;
+    height: 65px;
+    background-color: var(--surface-white);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.6rem;
+    cursor: grab;
+    user-select: none;
+    transition: all 0.25s ease-out;
+}
+
+.function-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.2);
+    background-color: var(--accent-blue);
+    color: white;
+    border-color: var(--accent-blue);
+}
+
+.function-card.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+    transform: scale(0.9);
+    box-shadow: none;
+}
+
+/* 4. Área de Encaixe (Slots) */
+.slots-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.slot-label {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--secondary-text);
+}
+
+.slot {
+    width: 100%;
+    height: 90px;
+    background-color: var(--bg-light);
+    border: 2px dashed var(--border-light);
+    border-radius: 18px;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.25s ease;
+}
+
+.slot.drag-over {
+    border-color: var(--accent-blue);
+    background-color: #eaf5fc;
+}
+
+.slot .function-card {
+    cursor: pointer;
+}
+
+/* 5. Resultados, Mensagens e Botão */
+.message-box {
+    text-align: center;
+    font-weight: 500;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+.message-box.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.message-box.error {
+    background-color: #fbe9e7;
+    color: var(--error-red);
+}
+
+.result-area {
+    text-align: center;
+}
+
+.mbti-type {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    min-height: 55px;
+}
+.mbti-type-placeholder {
+    color: var(--secondary-text);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#example-area h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+}
+#example-area a {
+    display: inline-block;
+    margin: 4px;
+    padding: 8px 18px;
+    background-color: var(--border-light);
+    color: var(--primary-text);
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+#example-area a:hover {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.reset-button {
+    margin-top: 2rem;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--error-red);
+    background-color: #fbe9e7;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.reset-button:hover {
+    background-color: var(--error-red);
+    color: white;
+}
+
+
+
+/* 6. Media Query para Desktop */
+@media (min-width: 800px) {
+    .main-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .functions-bank {
+        width: 280px;
+        flex-shrink: 0;
+    }
+
+    .stack-container {
+        flex-grow: 1;
+    }
+
+    .slots-area {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+

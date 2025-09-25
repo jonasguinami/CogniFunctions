@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construtor de Funções Cognitivas (MBTI)</title>
+    
+    <!-- Link para a nova fonte do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link para o arquivo de estilo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="main-container">
+        <!-- Adicione este botão logo após <main class="main-container"> -->
+<button id="theme-toggle-button" class="theme-toggle">
+    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+        <!-- Coluna da Esquerda: Banco de Funções -->
+        <aside class="functions-bank">
+            <h2>Funções Cognitivas</h2>
+            <div class="cards-wrapper">
+                <div class="function-card" data-function="Ne" draggable="true">Ne</div>
+                <div class="function-card" data-function="Ni" draggable="true">Ni</div>
+                <div class="function-card" data-function="Se" draggable="true">Se</div>
+                <div class="function-card" data-function="Si" draggable="true">Si</div>
+                <div class="function-card" data-function="Te" draggable="true">Te</div>
+                <div class="function-card" data-function="Ti" draggable="true">Ti</div>
+                <div class="function-card" data-function="Fe" draggable="true">Fe</div>
+                <div class="function-card" data-function="Fi" draggable="true">Fi</div>
+            </div>
+        </aside>
+
+        <!-- Coluna da Direita: Slots e Resultados -->
+        <section class="stack-container">
+            <h1>Monte sua Pilha de Funções</h1>
+            
+            <div class="slots-area">
+                <div class="slot-label">
+                    <span>Dominante</span>
+                    <div class="slot" id="slot-1"></div>
+                </div>
+                <div class="slot-label">
+                    <span>Auxiliar</span>
+                    <div class="slot" id="slot-2"></div>
+                </div>
+                <div class="slot-label">
+                    <span>Terciária</span>
+                    <div class="slot" id="slot-3"></div>
+                </div>
+                <div class="slot-label">
+                    <span>Inferior</span>
+                    <div class="slot" id="slot-4"></div>
+                </div>
+            </div>
+
+            <div id="message-box" class="message-box"></div>
+
+            <div class="result-area">
+                <div id="mbti-type" class="mbti-type mbti-type-placeholder">Aguardando...</div>
+                <div id="example-area">
+                    <!-- Este h3 é novo para combinar com o CSS -->
+                    <h3>Exemplos de Personalidades:</h3>
+                </div>
+            </div>
+            
+            <button id="reset-button" class="reset-button">Limpar Pilha</button>
+        </section>
+
+    </main>
+
+    <!-- Script no final do body para melhor performance -->
+    <script src="script.js"></script>
+</body>
+</html>
+
